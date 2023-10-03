@@ -36,5 +36,12 @@ exec:
 	@./${RUN_BINARY}
 
 run: start vet compile exec
-local: start
-	@go build && ./${BINARY_NAME}
+
+vendor:
+	@go mod vendor
+
+tidy:
+	@go mod tidy
+
+local: start clean
+	@go build -o ${BINARY_DIR}/${BINARY_NAME} && ./${BINARY_DIR}/${BINARY_NAME}

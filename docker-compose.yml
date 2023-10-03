@@ -4,18 +4,18 @@ services:
   pgsql:
     image: 'postgres:15-alpine'
     ports:
-      - '${DB_PORT:-5432}:5432'
+      - '6544:5432'
     environment:
-      PGPASSWORD: '${DB_PASSWORD:-pay}'
-      POSTGRES_DB: '${DB_DATABASE:-pay}'
-      POSTGRES_USER: '${DB_USERNAME:-pay}'
-      POSTGRES_PASSWORD: '${DB_PASSWORD:-pay}'
+      PGPASSWORD: 'rssagg'
+      POSTGRES_DB: 'rssagg'
+      POSTGRES_USER: 'rssagg'
+      POSTGRES_PASSWORD: 'rssagg'
     volumes:
       - 'rssagg-pgsql:/var/lib/postgresql/data'
     networks:
       - rssagg
     healthcheck:
-      test: [ "CMD", "pg_isready", "-q", "-d", "${DB_DATABASE:-pay}", "-U", "${DB_USERNAME:-pay}" ]
+      test: [ "CMD", "pg_isready", "-q", "-d", "rssagg", "-U", "rssagg" ]
       retries: 3
       timeout: 5s
 
