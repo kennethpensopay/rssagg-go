@@ -1,0 +1,5 @@
+bin/
+thunder-tests/
+
+.env
+rssagg
